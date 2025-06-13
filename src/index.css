@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply font-roboto text-gray-900 antialiased bg-gray-50;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-inter font-bold;
+  }
+}
+
+@layer components {
+  .alert-banner {
+    @apply fixed top-0 left-0 right-0 z-50 flex items-center justify-center py-2 text-white font-inter font-bold;
+  }
+  
+  .alert-banner.critical {
+    @apply bg-alert-700;
+  }
+  
+  .alert-banner.warning {
+    @apply bg-warning-600;
+  }
+  
+  .alert-banner.info {
+    @apply bg-secondary-600;
+  }
+  
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-600 text-white hover:bg-secondary-700 focus:ring-secondary-500;
+  }
+  
+  .btn-danger {
+    @apply bg-alert-600 text-white hover:bg-alert-700 focus:ring-alert-500;
+  }
+  
+  .btn-success {
+    @apply bg-success-600 text-white hover:bg-success-700 focus:ring-success-500;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden;
+  }
+  
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+  }
+  
+  .emergency-fab {
+    @apply fixed z-40 bottom-6 right-6 w-14 h-14 flex items-center justify-center rounded-full bg-warning-600 text-white shadow-lg hover:bg-warning-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-warning-500;
+  }
+
+  .hero-scroll-indicator {
+    @apply absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white cursor-pointer transition-opacity duration-300 hover:opacity-75;
+  }
+}
+
+/* Video background optimizations */
+@media (max-width: 768px) {
+  video {
+    display: none;
+  }
+}
+
+/* Ensure video covers full container */
+video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Smooth video transitions */
+.video-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+/* Enhanced scroll indicator animation */
+@keyframes scrollBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.scroll-indicator {
+  animation: scrollBounce 2s infinite;
+}
+
+/* Leaflet map container */
+.leaflet-container {
+  @apply h-full w-full rounded-lg;
+}
+
+/* For markers and popups */
+.disaster-marker {
+  @apply flex items-center justify-center text-white font-bold animate-pulse-slow;
+}
+
+.disaster-marker.flood {
+  @apply bg-blue-600;
+}
+
+.disaster-marker.earthquake {
+  @apply bg-alert-700;
+}
+
+.disaster-marker.fire {
+  @apply bg-red-600;
+}
+
+/* Animation for alerts */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Parallax effect */
+.parallax {
+  @apply relative overflow-hidden;
+  perspective: 1px;
+  transform-style: preserve-3d;
+}
+
+.parallax-bg {
+  @apply absolute inset-0 z-0;
+  transform: translateZ(-1px) scale(2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Enhanced button hover effects */
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Video control buttons */
+.video-controls {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  video {
+    animation: none !important;
+  }
+}
