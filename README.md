@@ -26,8 +26,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## License
 This project is open source and available under the MIT License.
-
----
-
-Feel free to update this README with project-specific instructions or details as development progresses.
-Current datetime: Saturday, June 14, 2025, 1:05 AM IST
